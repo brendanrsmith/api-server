@@ -4,13 +4,15 @@
 const express = require('express');
 const app = express();
 const mongoose = require('mongoose'); // mongo interface module
+const dotenv = require('dotenv');
 
-const MONGODB_URI = 'mongodb://localhost:27017/XXXXXX'; // set up connecting 'string' for connecting to MongoDB
+dotenv.config();
 
-const options = { newUrlParser: true, useUnifiedTopology: true } // will explain later
-
-// connect to the XXXXX database
+// connect to the database
+const MONGODB_URI = process.env.MONGODB_URI; //'mongodb://localhost:27017'; // set up connecting 'string' for connecting to entire MongoDB
+const options = { useNewUrlParser: true, useUnifiedTopology: true } // will explain later
 mongoose.connect(MONGODB_URI, options);
+
 
 // internal modules
 const notFound = require('../src/error-handlers/404');
@@ -28,6 +30,7 @@ app.use(clothRoutes);
 
 // 404 handler
 app.use('*', notFound);
+
 // 500 internal server error handler
 app.use(internalError);
 

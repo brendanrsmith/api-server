@@ -2,12 +2,12 @@
 
 const express = require('express');
 
-// pull in mongo model, instantiate 
+// pull in mongo model, instantiate
 const Cloth = require('../models/clothes-schema');
 const GenericCollection = require('../models/collection');
 const clothes = new GenericCollection(Cloth);
 
-// start new Express router 
+// start new Express router
 const router = express.Router();
 
 // routes
@@ -18,24 +18,34 @@ router.put('/clothes/:id', updateCloth);
 router.delete('/clothes/:id', deleteCloth);
 
 // route handlers
-function getClothes(req, res) {
-
+async function getClothes(req, res) {
+  let getAllClothes = await clothes.read();
+  res.status(200).json(getAllClothes);
 }
 
-function getCloth(req, res) {
-
+async function getCloth(req, res) {
+  const id = req.params.id;
+  let theCloth = await clothes.read(id);
+  res.status(200).json(theCloth);
 }
 
-function createCloth(req, res) {
-
+async function createCloth(req, res) {
+  let content = req.body;
+  let createdCloth = await clothes.create(content);
+  res.status(201).json(createdCloth);
 }
 
-function updateCloth(req, res) {
-
+async function updateCloth(req, res) {
+  let content = req.body;
+  let id = req.params.id;
+  let updated = await clothes.update(id, content);
+  res.status(200).json(updated);
 }
 
-function deleteCloth(req, res) {
-
+async function deleteCloth(req, res) {
+  const id = req.params.id;
+  let deleted = await clothes.delete(id);
+  res.status(200).json(deleted);
 }
 
 module.exports = router;
