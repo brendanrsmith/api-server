@@ -21,12 +21,13 @@ const logger = require('./middleware/logger');
 
 // routers
 const clothRoutes = require('./routes/clothes');
-
+const foodRoutes = require('./routes/food');
 
 // global middleware
 app.use(express.json());
 app.use(logger);
 app.use(clothRoutes);
+app.use(foodRoutes);
 
 // 404 handler
 app.use('*', notFound);
