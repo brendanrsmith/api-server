@@ -9,7 +9,7 @@ const dotenv = require('dotenv');
 dotenv.config();
 
 // connect to the database
-const MONGODB_URI = process.env.MONGODB_URI; //'mongodb://localhost:27017'; // set up connecting 'string' for connecting to entire MongoDB
+const MONGODB_URI = process.env.MONGODB_URI || 'mongodb://localhost:27017/food'; // set up connecting 'string' for connecting to entire MongoDB
 const options = { useNewUrlParser: true, useUnifiedTopology: true } // will explain later
 mongoose.connect(MONGODB_URI, options);
 
