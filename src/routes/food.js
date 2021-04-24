@@ -31,7 +31,7 @@ async function getFood(req, res) {
 
 async function createFood(req, res) {
   let content = req.body;
-  let created = foods.create(content);
+  let created = await foods.create(content);
   res.status(201).json(created);
 }
 
