@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 const mongoose = require('mongoose'); // mongo interface module
 const dotenv = require('dotenv');
+const cors = require('cors');
 
 dotenv.config();
 
@@ -25,6 +26,7 @@ const foodRoutes = require('./routes/food');
 const todoRoutes = require('./routes/todo');
 
 // global middleware
+app.use(cors());
 app.use(express.json());
 app.use(logger);
 app.use(clothRoutes);
