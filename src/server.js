@@ -22,12 +22,14 @@ const logger = require('./middleware/logger');
 // routers
 const clothRoutes = require('./routes/clothes');
 const foodRoutes = require('./routes/food');
+const todoRoutes = require('./routes/todo');
 
 // global middleware
 app.use(express.json());
 app.use(logger);
 app.use(clothRoutes);
 app.use(foodRoutes);
+app.use(todoRoutes);
 
 // 404 handler
 app.use('*', notFound);

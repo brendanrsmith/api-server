@@ -6,7 +6,7 @@ const Cloth = require('../src/models/clothes-schema');
 const GenericCollection = require('../src/models/collection');
 const clothes = new GenericCollection(Cloth);
 
-describe('Clothes Actions', () => {
+xdescribe('Clothes Actions', () => {
   it('can create a new clothes item', () => {
     let obj = { name: 'testClothes', color: 'testcolor' };
     let expected = { name: 'testClothes', color: 'testcolor' };
