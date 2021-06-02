@@ -6,7 +6,7 @@ const request = supertest(server);
 
 // ======================================================
 
-describe('WEB SERVER', () => {
+xdescribe('WEB SERVER', () => {
   it('should respond with 404 on bad route', async () => {
     const response = await request.get('/foo');
     expect(response.status).toBe(404);
@@ -20,7 +20,7 @@ describe('WEB SERVER', () => {
 
 // ======================================================
 
-describe('FOODS ROUTES', () => {
+xdescribe('FOODS ROUTES', () => {
   let id;
   it('should respond with 200 on GET /foods', async () => {
     const response = await request.get('/foods');
@@ -55,7 +55,7 @@ describe('FOODS ROUTES', () => {
 
 // ======================================================
 
-describe('ClOTHES ROUTES', () => {
+xdescribe('ClOTHES ROUTES', () => {
   let id;
   it('should respond with 200 on GET /clothes', async () => {
     const response = await request.get('/clothes');
